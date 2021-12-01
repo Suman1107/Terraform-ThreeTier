@@ -1,5 +1,7 @@
 #----compute/main.tf-----
 
+#----this is data resource for all the available ami in AWS ----
+
 data "aws_ami" "all_available_ami" {
   most_recent = true
   owners      = ["099720109477"]
@@ -9,6 +11,8 @@ data "aws_ami" "all_available_ami" {
   }
 }
 
+#---this resource generated random ID to make EC2 instnces unique ---
+
 resource "random_id" "asg-random_id" {
   byte_length = 1
   count       = var.max_size
@@ -17,6 +21,9 @@ resource "random_id" "asg-random_id" {
     user_data = var.userdata
   }
 }
+
+#----- this holds the keypair to login to EC2 instances----
+
 resource "aws_key_pair" "ec2-keypair" {
   key_name   = var.key_name
   public_key = file(var.sshkey_path)
