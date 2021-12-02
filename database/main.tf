@@ -16,6 +16,6 @@ resource "aws_db_instance" "mysql" {
   password               = var.dbpassword
 
   tags = {
-    Name = "mysql"
+    Name = "mysql-rds"
   }
 }
