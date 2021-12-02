@@ -1,4 +1,4 @@
-#----- loadbalancer/variable.tf----
+#----- loadbalancer/variable.tf-----
 
 variable "alb_security_groups" {
   type = list(string)
